@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>Tutorial 03</title>
+    <link href="../lib/bootstrap.min.css" rel="stylesheet" />
+    <script src="../lib/angular.min.js"></script>
+    <script src="controller.js"></script>
+  </head>
+  <body>
+    <div ng-controller="ContactController">
+      
+      <form ng-submit="add()" class="panel-body">
+        Email:<input type="text" ng-model="newcontact"/>
+        <button>Add</button>
+      </form>
+
+      <h2>Contacts</h2>
+
+      <ul>
+        <li ng-repeat="contact in contacts"> {{ contact}} </li>
+      </ul>
+
+    </div>
+  </body>
+</html>
