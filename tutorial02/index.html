@@ -10,7 +10,11 @@
       <label>Name:</label>
       <input type="text" ng-model="yourName" placeholder="Enter a name here">
       <hr>
-      <h1>Hello {{yourName}}!</h1>
+      <h1 ng-show="yourName">Hello {{yourName}}!</h1>
+      <hr>
+      <h4>Uppercase: {{ yourName | uppercase }}</h4>
+      <h4>Lowercase: {{ yourName | lowercase }}</h4>
+
     </div>
   </body>
 </html>
