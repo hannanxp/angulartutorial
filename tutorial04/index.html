@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>AngularJS Routing example</title>
+
+    <link href="../lib/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+		body {
+		  padding-top: 10px;
+		  background-color: #F5F5F5;
+		}
+    </style>
+
+    
+  </head>
+
+  <body ng-app="sampleApp">
+
+    <div class="container">
+		<div class="row">
+		<div class="col-md-3">
+		   <ul class="nav">
+				<li><a href="#AddNewOrder"> Add New Order </a></li>
+				<li><a href="#ShowOrders"> Show Order </a></li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+		  	<div ng-view></div>
+		</div>
+
+		</div>
+
+    </div><!-- /.container -->
+
+	<script src="../lib/angular.min.js"></script>
+  <script src="../lib/angular-route.min.js"></script>
+	<script src="app.js"></script>
+
+  </body>
+</html>
