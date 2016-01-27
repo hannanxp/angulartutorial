@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Custom Directives</title>
+
+    <link href="../lib/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      body {
+        padding-top: 10px;
+        background-color: #F5F5F5;
+      }
+    </style>
+
+
+  </head>
+
+  <body ng-app="docsIsolateScopeDirective">
+
+    <div ng-controller="Controller">
+      <my-customer info="naomi"></my-customer>
+      <hr>
+      <my-customer info="igor"></my-customer>
+    </div>
+
+
+    <script src="../lib/angular.min.js"></script>
+    <script src="app2.js"></script>
+
+  </body>
+</html>
