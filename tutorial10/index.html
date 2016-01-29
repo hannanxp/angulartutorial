@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Shared Variables</title>
+	<script type="text/javascript" src="shCore.js"></script>
+	<script type="text/javascript" src="shBrushJScript.js"></script>
+	<link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body style="background: white; font-family: Helvetica">
+
+<h1>Hello SyntaxHighlighter</h1>
+<pre class="brush: js;">
+/**
+ * Save variable between scopes
+ * 
+ * use:
+ *  Scopes.store('OneController', $scope);
+ *  $scope.variable1 = "One";
+ *  console.log("OneController::variable1", Scopes.get('OneController').variable1);
+ * 
+ * @param {type} param1
+ * @param {type} param2
+ */
+mainApp.factory('Scopes', function () {
+  var mem = {};
+
+  return {
+    store: function (key, value) {
+      mem[key] = value;
+    },
+    get: function (key) {
+      return mem[key];
+    }
+  };
+});
+</pre>
+
+<pre class="brush: js;">
+
+
+/**
+ * Shared vars between controller
+ * usage:
+ * 
+ app.controller('myController1', function($scope, $timeout, sharedProperties) {
+    $scope.stringValue = sharedProperties.getString();
+    $scope.objectValue = sharedProperties.getObject().data;    
+});
+
+app.controller('myController2', function($scope, sharedProperties) {
+    $scope.stringValue = sharedProperties.getString;
+    $scope.objectValue = sharedProperties.getObject();
+    $scope.setString = function(newValue) {
+        $scope.objectValue.data = newValue;
+        sharedProperties.setString(newValue);
+    };
+});
+ * 
+ */
+mainApp.service('sharedProperties', function () {
+  var stringValue = 'test string value';
+  var objectValue = {
+    data: 'test object value'
+  };
+
+  return {
+    getString: function () {
+      return stringValue;
+    },
+    setString: function (value) {
+      stringValue = value;
+    },
+    getObject: function () {
+      return objectValue;
+    },
+    setObject: function (obj) {
+      objectValue = obj;
+    }
+  };
+});
+
+
+  
+</pre>
+
+</html>

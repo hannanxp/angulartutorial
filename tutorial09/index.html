@@ -1,89 +1,104 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html ng-app="angularstrapApp" >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="angularstrapApp">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Shared Variables</title>
-	<script type="text/javascript" src="shCore.js"></script>
-	<script type="text/javascript" src="shBrushJScript.js"></script>
-	<link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
-	<script type="text/javascript">SyntaxHighlighter.all();</script>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="stylesheet" href="assets/css/bootstrapFlatly/bootstrap.css">
 </head>
+<title>AngularStrap Angular Application Template</title>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="#/">AngularStrap</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#/about">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div> <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- start dynamic content -->
+    <div ui-view=""></div>
+    <!-- end dynamic content -->
+</div>
+</body>
 
-<body style="background: white; font-family: Helvetica">
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<h1>Hello SyntaxHighlighter</h1>
-<pre class="brush: js;">
-/**
- * Save variable between scopes
- * 
- * use:
- *  Scopes.store('OneController', $scope);
- *  $scope.variable1 = "One";
- *  console.log("OneController::variable1", Scopes.get('OneController').variable1);
- * 
- * @param {type} param1
- * @param {type} param2
- */
-mainApp.factory('Scopes', function () {
-  var mem = {};
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 
-  return {
-    store: function (key, value) {
-      mem[key] = value;
-    },
-    get: function (key) {
-      return mem[key];
-    }
-  };
-});
-</pre>
-
-<pre class="brush: js;">
-
-
-/**
- * Shared vars between controller
- * usage:
- * 
- app.controller('myController1', function($scope, $timeout, sharedProperties) {
-    $scope.stringValue = sharedProperties.getString();
-    $scope.objectValue = sharedProperties.getObject().data;    
-});
-
-app.controller('myController2', function($scope, sharedProperties) {
-    $scope.stringValue = sharedProperties.getString;
-    $scope.objectValue = sharedProperties.getObject();
-    $scope.setString = function(newValue) {
-        $scope.objectValue.data = newValue;
-        sharedProperties.setString(newValue);
-    };
-});
- * 
- */
-mainApp.service('sharedProperties', function () {
-  var stringValue = 'test string value';
-  var objectValue = {
-    data: 'test object value'
-  };
-
-  return {
-    getString: function () {
-      return stringValue;
-    },
-    setString: function (value) {
-      stringValue = value;
-    },
-    getObject: function () {
-      return objectValue;
-    },
-    setObject: function (obj) {
-      objectValue = obj;
-    }
-  };
-});
-
-
-  
-</pre>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="app/app.config.js"></script>
+<script src="app/app.states.js"></script>
+<script src="app/components/home/home.directives.js"></script>
+<script src="app/components/home/home.controller.js"></script>
+<script src="app/components/home/services/home.services.js"></script>
+<script src="app/components/about/about.controller.js"></script>
+<script src="app/components/about/about.services.js"></script>
 
 </html>
