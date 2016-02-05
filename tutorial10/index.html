@@ -11,7 +11,7 @@
 
 <body style="background: white; font-family: Helvetica">
 
-<h1>Hello SyntaxHighlighter</h1>
+<h1>Shared Variables</h1>
 <pre class="brush: js;">
 /**
  * Save variable between scopes
@@ -84,6 +84,20 @@ mainApp.service('sharedProperties', function () {
 
 
   
+</pre>
+
+<h1>Event based</h1>
+<pre class="brush: js;">
+// something happen ini some controller...
+
+  $rootScope.$broadcast('login-sucess');
+
+
+/// other controller or directive listenig....
+
+  $scope.$on('login-sucess', function () {
+    $scope.user1 = $rootScope.globals.currentUser;
+  });
 </pre>
 
 </html>
